@@ -62,31 +62,30 @@ Docker API provides a way for external tools and applications to communicate wit
 
 # Steps of Creating Images on Docker
 
-1. **docker run hello-world**: This command runs a special Docker image called "hello-world." It's often used as a simple test to verify that Docker is installed and working correctly. When executed, it prints a friendly message to the terminal and then exits.
+1. docker run hello-world: Run a test container to check if Docker is working. It displays a friendly message and exits.
 
-2. **docker ps**: After running the "hello-world" container, this command shows the list of currently running Docker containers. Since the "hello-world" container has already exited, it won't appear in the list.
+2. docker ps: See the list of running containers (but "hello-world" container already exited, so it won't show here).
 
-3. **docker ps -a**: This command shows a list of all Docker containers, both running and stopped. It provides more detailed information about containers, including those that have already exited.
+3. docker ps -a: Show all containers, including those that stopped.
 
-4. **docker run -d -p 80:80 nginx**: This command runs an Nginx web server in detached mode (-d flag), which means it runs in the background. It also maps port 80 of the host to port 80 of the container (-p 80:80). The container is based on the "nginx" image from Docker Hub. Nginx is a popular web server used for hosting websites and serving web content.
+4. docker run -d -p 80:80 nginx: Start a web server (Nginx) in the background, connecting host's port 80 to container's port 80.
 
-5. **docker ps**: After running the Nginx container, this command shows the list of currently running Docker containers. You should now see the Nginx container listed.
+5. docker ps: Now, you'll see the running Nginx container.
 
-6. **docker stop 67493e8af1ac**: This command stops the Nginx container with the specified container ID (e.g., "67493e8af1ac"). Stopping a container gracefully shuts it down, allowing it to clean up and release resources properly.
+6. docker stop 67493e8af1ac: Stop the Nginx container with a specific ID.
 
-7. **docker start 67493e8af1ac**: This command starts the previously stopped Nginx container with the specified container ID. It allows you to restart a container that has been stopped earlier.
+7. docker start 67493e8af1ac: Restart the previously stopped Nginx container.
 
-8. **docker exec -it 67493e8af1ac sh**: This command allows you to execute a command (sh, which starts a shell) inside the running Nginx container. The -it flags allocate a pseudo-TTY and allow you to interact with the container's shell. This lets you access the container's shell and execute commands directly within it.
+8. docker exec -it 67493e8af1ac sh: Enter the Nginx container's command line interactively.
 
-9. **docker run -d -p 90:80 ahskhan/tech221-nginx:v1**: This command runs another Nginx container with the port mapping -p 90:80. It pulls the image "ahskhan/tech221-nginx:v1" from Docker Hub if it's not already available locally. This image appears to be a custom version of Nginx with the "tech221" tag.
+9. docker run -d -p 90:80 ahskhan/tech221-nginx:v1: Start another web server (custom Nginx image) on port 90 of the host, connected to port 80 of the container.
 
-10. **docker ps**: After running the second Nginx container, this command shows the list of currently running Docker containers. Now, you should see both Nginx containers listed.
+10. docker ps: Now, both Nginx containers will be visible in the running containers list.
 
-11. **docker commit 67493e8af1ac lamatya/tech241-nginx:v1**: This command creates a new Docker image from the changes made to the container with the ID "67493e8af1ac" (the first Nginx container). The new image is then tagged as "lamatya/tech241-nginx:v1."
+11. docker commit 67493e8af1ac lamatya/tech241-nginx:v1: Create a new image based on the first Nginx container's changes and tag it as "lamatya/tech241-nginx:v1."
 
-12. **docker images**: This command lists all the Docker images available on the local machine, including the new "lamatya/tech241-nginx:v1" image created in the previous step.
- 
+12. docker images: View all Docker images, including the newly created "lamatya/tech241-nginx:v1."
 
-13. **docker push lamatya/tech241-nginx:v1**: This command pushes the "lamatya/tech241-nginx:v1" image to the Docker Hub repository "lamatya/tech241-nginx." By pushing the image, you make it available for others to use and deploy.
+13. docker push lamatya/tech241-nginx:v1: Upload the "lamatya/tech241-nginx:v1" image to Docker Hub to share it with others.
 
-14. **docker run -d -p 120:80 lamatya/tech241-nginx:v1**: This command runs yet another instance of the "lamatya/tech241-nginx:v1" container, this time on port 120 of the host to port 80 of the container. This allows you to run multiple containers based on the same image, each accessible on different ports of the host.
+14. docker run -d -p 120:80 lamatya/tech241-nginx:v1: Start another instance of the "lamatya/tech241-nginx:v1" container on port 120 of the host, connected to port 80 of the container. This allows running multiple instances using the same image.
