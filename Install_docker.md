@@ -78,14 +78,19 @@ Docker API provides a way for external tools and applications to communicate wit
 
 8. docker exec -it 67493e8af1ac sh: Enter the Nginx container's command line interactively.
 
-9. docker run -d -p 90:80 ahskhan/tech221-nginx:v1: Start another web server (custom Nginx image) on port 90 of the host, connected to port 80 of the container.
+9.  docker ps: both Nginx containers will be visible in the running containers list.
 
-10. docker ps: Now, both Nginx containers will be visible in the running containers list.
+10. docker commit 67493e8af1ac lamatya/tech241-nginx:v1: Create a new image based on the first Nginx container's changes and tag it as "lamatya/tech241-nginx:v1."
 
-11. docker commit 67493e8af1ac lamatya/tech241-nginx:v1: Create a new image based on the first Nginx container's changes and tag it as "lamatya/tech241-nginx:v1."
+11. docker images: View all Docker images, including the newly created.
 
-12. docker images: View all Docker images, including the newly created "lamatya/tech241-nginx:v1."
+12. docker push lamatya/tech241-nginx:v1: Upload the "lamatya/tech241-nginx:v1" image to Docker Hub to share it with others.
 
-13. docker push lamatya/tech241-nginx:v1: Upload the "lamatya/tech241-nginx:v1" image to Docker Hub to share it with others.
+13. docker run -d -p 120:80 lamatya/tech241-nginx:v1: Start another instance of the "lamatya/tech241-nginx:v1" container on port 120 of the host, connected to port 80 of the container. This allows running multiple instances using the same image.
 
-14. docker run -d -p 120:80 lamatya/tech241-nginx:v1: Start another instance of the "lamatya/tech241-nginx:v1" container on port 120 of the host, connected to port 80 of the container. This allows running multiple instances using the same image.
+# Replace nginx default index.html 
+![Alt text](images/nginx.png)
+
+
+# Copy Nodejs app to Docker
+![Alt text](images/app.png)
